@@ -1,42 +1,52 @@
 package com.valentyn_tymku.bank;
 
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-public class Transaction extends Util{
+@XmlType(propOrder = { "id", "date", "srcAccount", "dstAccount", "sum" }, name = "transaction")
+@XmlRootElement
+public class Transaction extends Util {
 	private long id;
 	private Date date;
 	private Account srcAccount;
 	private Account dstAccount;
 	private double sum;
-	
-	public Transaction(Account srcAccount, Account dstAccount,
-			double sum) {
-		super();
+
+	public Transaction() {
+	}
+
+	public Transaction(Account srcAccount, Account dstAccount, double sum) {
+
 		this.id = GenerateID();
 		this.date = new Date();
 		this.srcAccount = srcAccount;
 		this.dstAccount = dstAccount;
 		this.sum = sum;
-		
-		if ((srcAccount.getDebit()+srcAccount.getCreditLimit())>=sum){
-			try{
-				srcAccount.setDebit(srcAccount.getDebit()-sum);
-				dstAccount.setDebit(dstAccount.getDebit()+sum);
-			}finally{}
-		}else{
+
+		if ((srcAccount.getDebit() + srcAccount.getCreditLimit()) >= sum) {
+			try {
+				srcAccount.setDebit(srcAccount.getDebit() - sum);
+				dstAccount.setDebit(dstAccount.getDebit() + sum);
+			} finally {
+			}
+		} else {
 			System.out.println("No enough money!");
 		}
 	}
-	
+
 	public long getId() {
 		return id;
 	}
+
 	public Account getSrcAccount() {
 		return srcAccount;
 	}
+
 	public Account getDstAccount() {
 		return dstAccount;
 	}
+
 	public double getSum() {
 		return sum;
 	}
@@ -45,6 +55,4 @@ public class Transaction extends Util{
 		return date;
 	}
 
-	
-	
 }
