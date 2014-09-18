@@ -2,29 +2,28 @@ package com.valentyn_tymku.bank;
 
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = { "name", "debit", "creditLimit", "customer" }, name = "account")
-public class Account extends Util {
 
-	private long id;
+
+@XmlType(propOrder = { "name", "debit", "creditLimit", "customer" }, name = "account")
+
+public class Account {
+	
+	public enum Currency {
+	    USD, EUR, UAH
+	}
+
 	private String name;
 	private double debit;
 	private double creditLimit;
 	private Customer customer;
 
-	/*
-	 * public Account() { super(); this.id = GenerateID(); }
-	 */
-	public Account(String name, double debit, double creditLimit) {
+	public Account(String name, double debit, double creditLimit, Customer customer) {
 
-		this.id = GenerateID();
+		
 		this.name = name;
 		this.debit = debit;
 		this.creditLimit = creditLimit;
-		// this.customer = customer;
-	}
-//todo 88888888888888888888888888
-	public long getId() {
-		return id;
+		this.customer = customer;
 	}
 
 	public String getName() {

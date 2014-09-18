@@ -1,51 +1,56 @@
 package com.valentyn_tymku.bank;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlType(propOrder = { "name", "address", "phone", "accounts" }, name = "customer")
 @XmlRootElement
-public class Customer extends Util {
-	private long id;
-	private String name;
+
+public class Customer {
+	private String firstName;
+	private String lastName;	
 	private String address;
 	private String phone;
-	private List<Account> accounts = new ArrayList<Account>();
+	private String email;
+	
 
 	public Customer() {
-		this.id = GenerateID();
-	}
-
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
+		
 	}
 
 	public Customer(String name, String address, String phone) {
 
-		this.id = GenerateID();
-		this.name = name;
+		this.firstName = name;
 		this.address = address;
 		this.phone = phone;
-		// this.accounts = acc;
+		
 	}
 
-	public long getId() {
-		return id;
+
+
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public String getName() {
-		return name;
+	public void setFirstName(String firstName) {
+		if (Validate.isValidName(firstName)) this.firstName = firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getAddress() {

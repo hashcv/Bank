@@ -6,7 +6,8 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType(propOrder = { "id", "date", "srcAccount", "dstAccount", "sum" }, name = "transaction")
 @XmlRootElement
-public class Transaction extends Util {
+
+public class Transaction {
 	private long id;
 	private Date date;
 	private Account srcAccount;
@@ -18,7 +19,7 @@ public class Transaction extends Util {
 
 	public Transaction(Account srcAccount, Account dstAccount, double sum) {
 
-		this.id = GenerateID();
+		this.id = Util.GenerateID();
 		this.date = new Date();
 		this.srcAccount = srcAccount;
 		this.dstAccount = dstAccount;
