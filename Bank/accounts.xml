@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<account>
+    <number>951798684</number>
+    <name>acc1</name>
+    <debit>100.0</debit>
+    <creditLimit>10.0</creditLimit>
+    <customer>
+        <firstName>James</firstName>
+        <lastName>Hetfield</lastName>
+        <email>jh@gmail.com</email>
+    </customer>
+</account>
