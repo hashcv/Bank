@@ -1,46 +1,47 @@
 package com.valentyn_tymku.bank;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+/*import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;*/
 
-@XmlType(propOrder = { "firstName", "lastName", "address", "phone", "email" }, name = "customer")
-@XmlRootElement
+//@XmlType(propOrder = { "firstName", "lastName", "ipn", "address", "phone", "email" }, name = "customer")
+//@XmlRootElement
 public class Customer {
 
 	private String firstName;
 	private String lastName;
+	private Long ipn;
 	private String address;
 	private String phone;
 	private String email;
 
 	public Customer() {
-
 	}
 
 	public String toString() {
-		String delim = "|";
 		StringBuilder sb = new StringBuilder();
 		sb.append(firstName);
-		sb.append(delim);
+		sb.append(Util.delim);
 		sb.append(lastName);
-		sb.append(delim);
+		sb.append(Util.delim);
+		sb.append(ipn);
+		sb.append(Util.delim);
 		sb.append(address);
-		sb.append(delim);
+		sb.append(Util.delim);
 		sb.append(phone);
-		sb.append(delim);
+		sb.append(Util.delim);
 		sb.append(email);
-
 		return sb.toString();
-
 	}
 
-	public Customer(String firstName, String lastName, String address,
-			String phone, String email) {
+	public Customer(String firstName, String lastName, Long ipn,
+			String address, String phone, String email) {
 
 		if (Validate.isValidName(firstName))
 			this.firstName = firstName;
 		if (Validate.isValidName(lastName))
 			this.lastName = lastName;
+		if (Validate.isValidIpn(ipn))
+			this.ipn = ipn;
 		if (Validate.isValidAddress(address))
 			this.address = address;
 		if (Validate.isValidPhone(phone))
@@ -92,6 +93,14 @@ public class Customer {
 	public void setPhone(String phone) {
 		if (Validate.isValidPhone(phone))
 			this.phone = phone;
+	}
+
+	public Long getIpn() {
+		return ipn;
+	}
+
+	public void setIpn(Long ipn) {
+		this.ipn = ipn;
 	}
 
 }

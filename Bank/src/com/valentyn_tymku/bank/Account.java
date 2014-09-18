@@ -3,7 +3,7 @@ package com.valentyn_tymku.bank;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = { "number", "name", "currency", "debit", "creditLimit", "customer" }, name = "account")
+@XmlType(propOrder = { "number", "name", "currency", "debit", "creditLimit" }, name = "account")
 @XmlRootElement
 public class Account {
 
@@ -19,29 +19,29 @@ public class Account {
 
 	public Account(long number, String name, Currencies currency, double debit,
 			double creditLimit, Customer customer) {
-		
+
 		this.number = number;
 		this.name = name;
 		this.debit = debit;
 		this.creditLimit = creditLimit;
 		this.customer = customer;
 	}
-	
-	public String toString(){
-		String delim = "|";
+
+	public String toString() {
+
 		StringBuilder sb = new StringBuilder();
 		sb.append(number);
-		sb.append(delim);
+		sb.append(Util.delim);
 		sb.append(name);
-		sb.append(delim);
+		sb.append(Util.delim);
 		sb.append(debit);
-		sb.append(delim);
+		sb.append(Util.delim);
 		sb.append(creditLimit);
-		sb.append(delim);
+		sb.append(Util.delim);
 		sb.append(customer.getFirstName());
 		sb.append(customer.getLastName());
 		return sb.toString();
-		
+
 	}
 
 	public String getName() {

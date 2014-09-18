@@ -13,6 +13,15 @@ public class Validate {
 		}
 	}
 
+	public static boolean isValidIpn(Long ipn) {
+		if (ipn.SIZE == 10)
+			return true;
+		else {
+			System.out.println("IPN is invalid!");
+			return false;
+		}
+	}
+
 	public static boolean isValidPhone(String phone) {
 		if (phone.matches("^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$"))
 			return true;

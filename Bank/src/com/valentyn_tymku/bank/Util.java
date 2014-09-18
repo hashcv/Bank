@@ -2,7 +2,11 @@ package com.valentyn_tymku.bank;
 
 import java.util.Random;
 
-public abstract class Util {
+public class Util {
+
+	public final static String delim = "|";
+	public final static String readDelim = "\\|";
+	
 
 	public static long GenerateID() {
 		Random rand = new Random();
