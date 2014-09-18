@@ -1,26 +1,47 @@
 package com.valentyn_tymku.bank;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
-
-@XmlType(propOrder = { "name", "currency", "debit", "creditLimit", "customer" }, name = "account")
-
+@XmlType(propOrder = { "number", "name", "currency", "debit", "creditLimit", "customer" }, name = "account")
+@XmlRootElement
 public class Account {
 
+	private long number;
 	private String name;
 	private Currencies currency;
 	private double debit;
 	private double creditLimit;
 	private Customer customer;
 
-	public Account(String name, double debit, double creditLimit, Customer customer) {
+	public Account() {
+	}
 
+	public Account(long number, String name, Currencies currency, double debit,
+			double creditLimit, Customer customer) {
 		
+		this.number = number;
 		this.name = name;
 		this.debit = debit;
 		this.creditLimit = creditLimit;
 		this.customer = customer;
+	}
+	
+	public String toString(){
+		String delim = "|";
+		StringBuilder sb = new StringBuilder();
+		sb.append(number);
+		sb.append(delim);
+		sb.append(name);
+		sb.append(delim);
+		sb.append(debit);
+		sb.append(delim);
+		sb.append(creditLimit);
+		sb.append(delim);
+		sb.append(customer.getFirstName());
+		sb.append(customer.getLastName());
+		return sb.toString();
+		
 	}
 
 	public String getName() {
@@ -61,5 +82,13 @@ public class Account {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public long getNumber() {
+		return number;
+	}
+
+	public void setNumber(long number) {
+		this.number = number;
 	}
 }

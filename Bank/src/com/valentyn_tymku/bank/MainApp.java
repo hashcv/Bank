@@ -1,7 +1,9 @@
 package com.valentyn_tymku.bank;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,72 +13,116 @@ import javax.xml.bind.Marshaller;
 
 public class MainApp {
 	public Customer dataCustomer() {
-		Customer cust1 = new Customer("James Hetfield", "Address1",
-				"+12344565734");
+		Customer cust1 = new Customer("James", "Hetfield", "43, SomeStreet st., Ukraine",
+				"+80992233444", "jh@gmail.com");
 		return cust1;
 
 	}
 
-	public Customer dataAccount() {
+	public Account dataAccount() {
 		Customer cust1 = dataCustomer();
-		List<Account> accs = new ArrayList<Account>();
-		accs.add(new Account("acc1", 100, 10));
-		accs.add(new Account("acc2", 200, 20));
-		cust1.setAccounts(accs);
-		return cust1;
+
+		Account acc1 = new Account(951798684, "acc1", Currencies.USD, 100, 10, cust1);
+		return acc1;
 
 	}
 
-	public Transaction dataTransaction() {
-
-		Customer cust1 = new Customer("James Hetfield", "Address1",
-				"+12344565734");
-		Customer cust2 = new Customer("Lars Ulrich", "Address2", "+364743756");
-
-		List<Account> accs = new ArrayList<Account>();
-		accs.add(new Account("acc1", 100, 10));
-		accs.add(new Account("acc2", 200, 20));
-		cust1.setAccounts(accs);
-
-		accs.clear();
-		accs.add(new Account("acc1", 500, 100));
-		accs.add(new Account("acc2", 600, 200));
-		cust2.setAccounts(accs);
-
-		Transaction tr1 = new Transaction(cust1.getAccounts().get(0), cust2
-				.getAccounts().get(0), 15);
-
-		return tr1;
-	}
+	/*
+	 * public Transaction dataTransaction() {
+	 * 
+	 * Customer cust1 = new Customer("James Hetfield", "Address1",
+	 * "+12344565734"); Customer cust2 = new Customer("Lars Ulrich", "Address2",
+	 * "+364743756");
+	 * 
+	 * List<Account> accs = new ArrayList<Account>(); accs.add(new
+	 * Account("acc1", 100, 10)); accs.add(new Account("acc2", 200, 20));
+	 * cust1.setAccounts(accs);
+	 * 
+	 * accs.clear(); accs.add(new Account("acc1", 500, 100)); accs.add(new
+	 * Account("acc2", 600, 200)); cust2.setAccounts(accs);
+	 * 
+	 * Transaction tr1 = new Transaction(cust1.getAccounts().get(0), cust2
+	 * .getAccounts().get(0), 15);
+	 * 
+	 * return tr1; }
+	 */
 
 	public void marshallExample() {
 		try {
+			File fileCustomers = new File( "customers.xml");
+			File fileAccounts = new File( "accounts.xml");
+			
 			JAXBContext context = JAXBContext.newInstance(Customer.class);
 			Marshaller marshaller = context.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
 					Boolean.TRUE);
-			marshaller.marshal(dataAccount(), System.out);
+			marshaller.marshal(dataCustomer(), fileCustomers);
+
 			System.out.println();
-			context = JAXBContext.newInstance(Transaction.class);
+
+			context = JAXBContext.newInstance(Account.class);
 			marshaller = context.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
 					Boolean.TRUE);
-			marshaller.marshal(dataTransaction(), System.out);
+			marshaller.marshal(dataAccount(), fileAccounts);
 
 		} catch (JAXBException exception) {
 			Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE,
 					"marshallExample threw JAXBException", exception);
 		}
 	}
-
+	
+	
 	public void unmarshallExample() {
 
+	}
+	
+	public void out(Dst dst) throws IOException{
+		
+		switch (dst){
+		case TXT : 
+			BufferedWriter cw = new BufferedWriter(new FileWriter("customers.txt"));
+			BufferedWriter ca = new BufferedWriter(new FileWriter("accounts.txt"));
+			
+			cw.write(dataCustomer().toString());
+			ca.write(dataAccount().toString());
+			
+			cw.close();
+			ca.close();
+			break;
+		case SOUT: 
+			System.out.println(dataCustomer());
+			System.out.println(dataAccount());
+			break;
+		case XML: 
+			MainApp instance = new MainApp();
+			instance.marshallExample();
+			break;
+		}
+		
+		
+		
 	}
 
 	public static void main(String[] args) {
 
 		MainApp instance = new MainApp();
-		instance.marshallExample();
+		try {
+			instance.out(Dst.TXT);
+			instance.out(Dst.SOUT);
+			instance.out(Dst.XML);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		// instance.unmarshallExample();
 
 		/*
