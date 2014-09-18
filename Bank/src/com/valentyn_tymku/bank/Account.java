@@ -8,11 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 public class Account {
 	
-	public enum Currency {
+	public enum Currencies {
 	    USD, EUR, UAH
 	}
 
 	private String name;
+	private Currencies currency;
 	private double debit;
 	private double creditLimit;
 	private Customer customer;
@@ -32,6 +33,14 @@ public class Account {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Currencies getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(Currencies currency) {
+		this.currency = currency;
 	}
 
 	public double getDebit() {
