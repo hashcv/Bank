@@ -4,13 +4,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 
-@XmlType(propOrder = { "name", "debit", "creditLimit", "customer" }, name = "account")
+@XmlType(propOrder = { "name", "currency", "debit", "creditLimit", "customer" }, name = "account")
 
 public class Account {
-	
-	public enum Currencies {
-	    USD, EUR, UAH
-	}
 
 	private String name;
 	private Currencies currency;

@@ -1,10 +1,11 @@
 package com.valentyn_tymku.bank;
 
+//import com.valentyn_tymku.bank.Validate;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = { "name", "address", "phone", "accounts" }, name = "customer")
+@XmlType(propOrder = { "firstName", "lastName", "address", "phone", "email" }, name = "customer")
 @XmlRootElement
 
 public class Customer {
@@ -18,14 +19,33 @@ public class Customer {
 	public Customer() {
 		
 	}
-
-	public Customer(String name, String address, String phone) {
-
-		this.firstName = name;
-		this.address = address;
-		this.phone = phone;
+	
+	public String toString (){
+		String delim = " | ";
+		StringBuilder sb = new StringBuilder();
+		sb.append(firstName);
+		sb.append(delim);
+		sb.append(lastName);
+		sb.append(delim);
+		sb.append(address);
+		sb.append(delim);
+		sb.append(phone);
+		sb.append(delim);
+		sb.append(email);
+		
+		return sb.toString();
 		
 	}
+
+	public Customer(String firstName, String lastName, String address, String phone, String email) {
+		
+		if (Validate.isValidName(firstName)) this.firstName = firstName;
+		if (Validate.isValidName(lastName)) this.lastName = lastName;
+		if (Validate.isValidAddress(address)) this.address = address;
+		if (Validate.isValidPhone(phone)) this.phone = phone;
+		if (Validate.isValidEmail(email)) this.email = email;
+	}
+
 
 
 
@@ -42,7 +62,7 @@ public class Customer {
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		if (Validate.isValidName(lastName)) this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -50,7 +70,7 @@ public class Customer {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		if (Validate.isValidEmail(email)) this.email = email;
 	}
 
 	public String getAddress() {
@@ -58,7 +78,7 @@ public class Customer {
 	}
 
 	public void setAddress(String address) {
-		this.address = address;
+		if (Validate.isValidAddress(address)) this.address = address;
 	}
 
 	public String getPhone() {
@@ -66,7 +86,7 @@ public class Customer {
 	}
 
 	public void setPhone(String phone) {
-		this.phone = phone;
+		if (Validate.isValidPhone(phone)) this.phone = phone;
 	}
 
 }
