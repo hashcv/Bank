@@ -10,10 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.application.Application;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
 
 public class Input {
 	private static List<Customer> custs = Storage.custs;
@@ -123,6 +126,9 @@ public class Input {
 	}
 
 	public static void readSQL() throws IOException {
+		
+		
+		
 		App.main(null);
 	}
 
