@@ -14,12 +14,12 @@ public class Validate {
 	}
 
 	public static boolean isValidIpn(Long ipn) {
-		if (ipn.SIZE == 10)
+		//if (Long.SIZE == 10)
+		//	return true;
+		//else {
+			//System.out.println("IPN is invalid!");
 			return true;
-		else {
-			System.out.println("IPN is invalid!");
-			return true;
-		}
+		//}
 	}
 
 	public static boolean isValidPhone(String phone) {

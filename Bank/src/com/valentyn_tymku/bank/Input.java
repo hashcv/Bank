@@ -1,29 +1,23 @@
 package com.valentyn_tymku.bank;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.application.Application;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 public class Input {
-	static List<Customer> custs = Storage.custs;//new ArrayList<Customer>();
-	static List<Account> accs = Storage.accs;//new ArrayList<Account>();
+	private static List<Customer> custs = Storage.custs;
+	private static List<Account> accs = Storage.accs;
 
 	public static void addCustomer(String str) {
 		List<String> arr = new ArrayList<String>();
@@ -47,7 +41,7 @@ public class Input {
 				.parseDouble(arr.get(4)), custs.get(custIndex)));
 	}
 
-	public static void readXML() {
+	public static void readXML() throws IOException {
 		try {
 			File file = new File("customers.xml");
 			File file1 = new File("accounts.xml");
@@ -68,10 +62,11 @@ public class Input {
 			Logger.getLogger(Application.class.getName()).log(Level.SEVERE,
 					"marshallExample threw JAXBException", exception);
 		}
+		App.main(null);
 	}
 
 	public static void readTXT() throws IOException {
-		// Read customers file
+
 		BufferedReader custReader = new BufferedReader(new FileReader(
 				"customers.txt"));
 		String str;
@@ -79,20 +74,22 @@ public class Input {
 			addCustomer(str);
 		}
 
-		// Read accounts file
 		BufferedReader accReader = new BufferedReader(new FileReader(
 				"accounts.txt"));
 
 		while ((str = accReader.readLine()) != null) {
 			addAccount(str);
 		}
-		for (Customer cust : custs) {
-			System.out.println(cust.toString());
-		}
 
-		for (Account acc : accs) {
-			System.out.println(acc.toString());
-		}
+		custReader.close();
+		accReader.close();
+
+		/*
+		 * for (Customer cust : custs) { System.out.println(cust.toString()); }
+		 * 
+		 * for (Account acc : accs) { System.out.println(acc.toString()); }
+		 */
+		App.main(null);
 	}
 
 	public static void readConsole() throws IOException {
@@ -127,17 +124,16 @@ public class Input {
 			addAccount(r3.readLine());
 			break;
 		}
-		for (Customer cust : custs) {
-			System.out.println(cust.toString());
-		}
-
-		for (Account acc : accs) {
-			System.out.println(acc.toString());
-		}
+		/*
+		 * for (Customer cust : custs) { System.out.println(cust.toString()); }
+		 * 
+		 * for (Account acc : accs) { System.out.println(acc.toString()); }
+		 */
+		App.main(null);
 	}
 
-	public static void readSQL() {
-
+	public static void readSQL() throws IOException {
+		App.main(null);
 	}
 
 }

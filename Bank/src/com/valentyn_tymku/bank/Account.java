@@ -3,7 +3,8 @@ package com.valentyn_tymku.bank;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = { "number", "name", "currency", "debit", "creditLimit", "customer" }, name = "account")
+@XmlType(propOrder = { "number", "name", "currency", "debit", "creditLimit",
+		"customer" }, name = "account")
 @XmlRootElement
 public class Account {
 
@@ -12,9 +13,8 @@ public class Account {
 	private Currencies currency;
 	private double debit;
 	private double creditLimit;
-	//private long customerIpn;
+	// private long customerIpn;
 	private Customer customer;
-	
 
 	public Account() {
 	}
@@ -27,7 +27,7 @@ public class Account {
 		this.debit = debit;
 		this.creditLimit = creditLimit;
 		this.customer = customer;
-		//this.customerIpn = customer.getIpn();
+		// this.customerIpn = customer.getIpn();
 	}
 
 	public String toString() {
@@ -94,11 +94,10 @@ public class Account {
 		this.number = number;
 	}
 
-/*	public long getCustomerIpn() {
-		return customerIpn;
-	}
-
-	public void setCustomerIpn(long customerIpn) {
-		this.customerIpn = customerIpn;
-	}*/
+	/*
+	 * public long getCustomerIpn() { return customerIpn; }
+	 * 
+	 * public void setCustomerIpn(long customerIpn) { this.customerIpn =
+	 * customerIpn; }
+	 */
 }

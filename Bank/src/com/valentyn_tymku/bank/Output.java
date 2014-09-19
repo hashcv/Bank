@@ -19,7 +19,7 @@ public class Output {
 	private static List<Customer> custs = Storage.custs;
 	private static List<Account> accs = Storage.accs;
 
-	public static void writeConsole() {
+	public static void writeConsole() throws IOException {
 		for (Customer cust : custs) {
 			System.out.println(cust.toString());
 		}
@@ -27,6 +27,7 @@ public class Output {
 		for (Account acc : accs) {
 			System.out.println(acc.toString());
 		}
+		App.main(null);
 	}
 
 	public static void writeTXT() throws IOException {
@@ -44,34 +45,38 @@ public class Output {
 
 		cw.close();
 		ca.close();
+		App.main(null);
 	}
 
-	public static void writeXML() {
-		
-		  try { 
-			  File fileCustomers = new File("customersW.xml"); 
-			  File fileAccounts = new File("accountsW.xml");
-			  for (Customer cust : custs) {
-		  JAXBContext context = JAXBContext.newInstance(Customer.class);
-		  Marshaller marshaller = context.createMarshaller();
-		  marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		  marshaller.marshal(cust, fileCustomers);
-			  }
-		  
-			  for (Account acc : accs) {
-				  JAXBContext context = JAXBContext.newInstance(Account.class); 
-				  Marshaller marshaller = context.createMarshaller();
-				  marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-				  marshaller.marshal(acc, fileAccounts);
-			  }
-			  
-		  } catch (JAXBException exception) {
-		  Logger.getLogger(Application.class.getName()).log(Level.SEVERE,
-		  "marshallExample threw JAXBException", exception); } 
-		 
+	public static void writeXML() throws IOException {
+
+		try {
+			File fileCustomers = new File("customersW.xml");
+			File fileAccounts = new File("accountsW.xml");
+			for (Customer cust : custs) {
+				JAXBContext context = JAXBContext.newInstance(Customer.class);
+				Marshaller marshaller = context.createMarshaller();
+				marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
+						Boolean.TRUE);
+				marshaller.marshal(cust, fileCustomers);
+			}
+
+			for (Account acc : accs) {
+				JAXBContext context = JAXBContext.newInstance(Account.class);
+				Marshaller marshaller = context.createMarshaller();
+				marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
+						Boolean.TRUE);
+				marshaller.marshal(acc, fileAccounts);
+			}
+
+		} catch (JAXBException exception) {
+			Logger.getLogger(Application.class.getName()).log(Level.SEVERE,
+					"marshallExample threw JAXBException", exception);
+		}
+		App.main(null);
 	}
 
-	public static void writeSQL() {
-
+	public static void writeSQL() throws IOException {
+		App.main(null);
 	}
 }
