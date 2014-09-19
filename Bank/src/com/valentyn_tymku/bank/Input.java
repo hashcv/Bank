@@ -84,11 +84,6 @@ public class Input {
 		custReader.close();
 		accReader.close();
 
-		/*
-		 * for (Customer cust : custs) { System.out.println(cust.toString()); }
-		 * 
-		 * for (Account acc : accs) { System.out.println(acc.toString()); }
-		 */
 		App.main(null);
 	}
 
@@ -124,11 +119,6 @@ public class Input {
 			addAccount(r3.readLine());
 			break;
 		}
-		/*
-		 * for (Customer cust : custs) { System.out.println(cust.toString()); }
-		 * 
-		 * for (Account acc : accs) { System.out.println(acc.toString()); }
-		 */
 		App.main(null);
 	}
 

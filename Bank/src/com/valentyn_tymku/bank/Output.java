@@ -20,13 +20,7 @@ public class Output {
 	private static List<Account> accs = Storage.accs;
 
 	public static void writeConsole() throws IOException {
-		for (Customer cust : custs) {
-			System.out.println(cust.toString());
-		}
-
-		for (Account acc : accs) {
-			System.out.println(acc.toString());
-		}
+		Storage.printAll();
 		App.main(null);
 	}
 
