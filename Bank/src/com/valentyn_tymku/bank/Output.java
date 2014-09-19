@@ -64,7 +64,7 @@ public class Output {
 			}
 
 		} catch (JAXBException exception) {
-			Logger.getLogger(Application.class.getName()).log(Level.SEVERE,
+			Logger.getLogger(App.class.getName()).log(Level.SEVERE,
 					"marshallExample threw JAXBException", exception);
 		}
 		App.main(null);

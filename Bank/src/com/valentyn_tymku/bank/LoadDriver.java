@@ -2,16 +2,14 @@ package com.valentyn_tymku.bank;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
-// Notice, do not import com.mysql.jdbc.*
-// or you will have problems!
+import java.sql.Statement;
 
 public class LoadDriver {
     public static void main(String[] args) {
         try {
-            // The newInstance() call is a work around for some
-            // broken Java implementations
+
 
             Class.forName("com.mysql.jdbc.Driver").newInstance();
         } catch (Exception ex) {
@@ -21,10 +19,15 @@ public class LoadDriver {
         Connection conn = null;
        
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/test?" +
-                                           "user=monty&password=greatsqldb");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/hashcv?user=root&password=root");
+            
 
-            // Do something with the Connection
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select * from test");
+            
+            while(rs.next()){
+            	System.out.println(rs.getInt("p1"));
+            	}
 
            
         } catch (SQLException ex) {

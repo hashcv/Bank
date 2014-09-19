@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javafx.application.Application;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -24,14 +22,14 @@ public class Input {
 
 	public static void addCustomer(String str) {
 		List<String> arr = new ArrayList<String>();
-		arr.addAll(Arrays.asList(str.split(Util.readDelim)));
+		arr.addAll(Arrays.asList(str.split(Util.READDELIM)));
 		custs.add(new Customer(arr.get(0), arr.get(1), Long.parseLong(arr
 				.get(2)), arr.get(3), arr.get(4), arr.get(5)));
 	}
 
 	public static void addAccount(String str) {
 		List<String> arr = new ArrayList<String>();
-		arr.addAll(Arrays.asList(str.split(Util.readDelim)));
+		arr.addAll(Arrays.asList(str.split(Util.READDELIM)));
 
 		int custIndex = 0;
 		for (Customer cust : custs) {
@@ -62,13 +60,13 @@ public class Input {
 			System.out.println(account);
 
 		} catch (JAXBException exception) {
-			Logger.getLogger(Application.class.getName()).log(Level.SEVERE,
+			Logger.getLogger(App.class.getName()).log(Level.SEVERE,
 					"marshallExample threw JAXBException", exception);
 		}
 		App.main(null);
 	}
 
-	public static void readTXT() throws IOException {
+	public static void read() throws IOException {
 
 		BufferedReader custReader = new BufferedReader(new FileReader(
 				"customers.txt"));

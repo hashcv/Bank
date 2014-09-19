@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class App {
+	
+	Input obj = new InputTxt();
 
 	public static void input() throws IOException {
 		System.out.println("What is input destination?");
@@ -19,7 +21,8 @@ public class App {
 
 		switch (Integer.valueOf(tIn)) {
 		case 1:
-			Input.readConsole();
+			
+			Input.read();
 			break;
 		case 2:
 			Input.readTXT();

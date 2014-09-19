@@ -19,7 +19,7 @@ public class Storage {
 
 	}
 	
-	public static void clearAll(){
+	public static void clearAll() {
 		custs.clear();
 		accs.clear();
 	}
