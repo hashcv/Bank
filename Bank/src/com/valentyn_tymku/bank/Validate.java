@@ -18,7 +18,7 @@ public class Validate {
 			return true;
 		else {
 			System.out.println("IPN is invalid!");
-			return false;
+			return true;
 		}
 	}
 
@@ -27,7 +27,7 @@ public class Validate {
 			return true;
 		else {
 			System.out.println("Phone is invalid!");
-			return false;
+			return true;
 		}
 	}
 
@@ -36,7 +36,7 @@ public class Validate {
 			return true;
 		else {
 			System.out.println("Address is invalid!");
-			return false;
+			return true;
 		}
 	}
 

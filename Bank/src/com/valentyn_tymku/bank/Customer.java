@@ -1,10 +1,10 @@
 package com.valentyn_tymku.bank;
 
-/*import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;*/
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-//@XmlType(propOrder = { "firstName", "lastName", "ipn", "address", "phone", "email" }, name = "customer")
-//@XmlRootElement
+@XmlType(propOrder = { "firstName", "lastName", "ipn", "address", "phone", "email" }, name = "customer")
+@XmlRootElement
 public class Customer {
 
 	private String firstName;

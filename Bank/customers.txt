@@ -1,1 +1,1 @@
-James|Hetfield|null|null|jh@gmail.com
+James|Hetfield|1212121212|Address1|+380992233444|jh@gmail.com

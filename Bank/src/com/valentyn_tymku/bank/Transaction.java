@@ -1,11 +1,11 @@
 package com.valentyn_tymku.bank;
 
 import java.util.Date;
-import javax.xml.bind.annotation.XmlRootElement;
+/*import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlType(propOrder = { "id", "date", "srcAccount", "dstAccount", "sum" }, name = "transaction")
-@XmlRootElement
+@XmlRootElement*/
 public class Transaction {
 	private long id;
 	private Date date;
