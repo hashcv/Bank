@@ -13,6 +13,7 @@ public class Storage {
 				return cust;
 
 		}
+		System.out.println("Not found customer with ipn "+ipn);
 		return null;
 	}
 

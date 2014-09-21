@@ -26,6 +26,7 @@ public class Account {
 
 		this.number = number;
 		this.name = name;
+		this.currency = currency;
 		this.debit = debit;
 		this.creditLimit = creditLimit;
 		this.customer = customer;
@@ -38,6 +39,8 @@ public class Account {
 		sb.append(number);
 		sb.append(Util.DELIM);
 		sb.append(name);
+		sb.append(Util.DELIM);
+		sb.append(currency.toString());
 		sb.append(Util.DELIM);
 		sb.append(debit);
 		sb.append(Util.DELIM);
