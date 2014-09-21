@@ -18,7 +18,7 @@ public class Transaction {
 
 	public Transaction(Account srcAccount, Account dstAccount, double sum) {
 
-		this.id = Util.GenerateID();
+		this.id = Util.generateID();
 		this.date = new Date();
 		this.srcAccount = srcAccount;
 		this.dstAccount = dstAccount;

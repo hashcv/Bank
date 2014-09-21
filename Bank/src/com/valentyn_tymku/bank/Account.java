@@ -1,5 +1,7 @@
 package com.valentyn_tymku.bank;
 
+import java.util.Arrays;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -34,16 +36,25 @@ public class Account {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append(number);
-		sb.append(Util.delim);
+		sb.append(Util.DELIM);
 		sb.append(name);
-		sb.append(Util.delim);
+		sb.append(Util.DELIM);
 		sb.append(debit);
-		sb.append(Util.delim);
+		sb.append(Util.DELIM);
 		sb.append(creditLimit);
-		sb.append(Util.delim);
+		sb.append(Util.DELIM);
 		sb.append(customer.getIpn());
 		return sb.toString();
 
+	}
+
+	public static Account parseAcc(String str) {
+		String[] arr = str.split(Util.READDELIM);
+
+		return new Account(Long.parseLong(arr[0]), arr[1],
+				Currencies.valueOf(arr[2]), Double.parseDouble(arr[3]),
+				Double.parseDouble(arr[4]), Storage.findCustomer(Long
+						.parseLong(arr[5])));
 	}
 
 	public String getName() {

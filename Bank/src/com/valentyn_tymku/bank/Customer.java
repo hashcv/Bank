@@ -1,5 +1,7 @@
 package com.valentyn_tymku.bank;
 
+import java.util.Arrays;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -21,17 +23,22 @@ public class Customer {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(firstName);
-		sb.append(Util.delim);
+		sb.append(Util.DELIM);
 		sb.append(lastName);
-		sb.append(Util.delim);
+		sb.append(Util.DELIM);
 		sb.append(ipn);
-		sb.append(Util.delim);
+		sb.append(Util.DELIM);
 		sb.append(address);
-		sb.append(Util.delim);
+		sb.append(Util.DELIM);
 		sb.append(phone);
-		sb.append(Util.delim);
+		sb.append(Util.DELIM);
 		sb.append(email);
 		return sb.toString();
+	}
+	
+	public static Customer parseCust(String str) {
+		String[] arr = str.split(Util.READDELIM);
+		return new Customer(arr[0], arr[1], Long.parseLong(arr[2]), arr[3], arr[4], arr[5]);
 	}
 
 	public Customer(String firstName, String lastName, Long ipn,

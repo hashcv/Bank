@@ -7,6 +7,15 @@ public class Storage {
 	public static List<Customer> custs = new ArrayList<Customer>();
 	public static List<Account> accs = new ArrayList<Account>();
 
+	public static Customer findCustomer(Long ipn) {
+		for (Customer cust : custs) {
+			if (cust.getIpn().equals(ipn))
+				return cust;
+
+		}
+		return null;
+	}
+
 	public static void printAll() {
 
 		for (Customer cust : custs) {
@@ -18,7 +27,7 @@ public class Storage {
 		}
 
 	}
-	
+
 	public static void clearAll() {
 		custs.clear();
 		accs.clear();
