@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<customer>
-    <firstName>James</firstName>
-    <lastName>Hetfield</lastName>
-    <ipn>1212121212</ipn>
-    <address>Address1</address>
-    <phone>+380992233444</phone>
-    <email>jh@gmail.com</email>
-</customer>

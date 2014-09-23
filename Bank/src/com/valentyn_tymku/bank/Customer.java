@@ -5,6 +5,10 @@ import java.util.Arrays;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+/**
+ * @author hash
+ *
+ */
 @XmlType(propOrder = { "firstName", "lastName", "ipn", "address", "phone",
 		"email" }, name = "customer")
 @XmlRootElement
@@ -20,6 +24,9 @@ public class Customer {
 	public Customer() {
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(firstName);
@@ -36,11 +43,29 @@ public class Customer {
 		return sb.toString();
 	}
 	
+	/**
+	 * @param string of Customer
+	 * @return New Customer
+	 * arr[0] - firstName
+	 * arr[1] - lastName
+	 * arr[2] - ipn
+	 * arr[3] - address
+	 * arr[4] - phone
+	 * arr[5] - email
+	 */
 	public static Customer parseCust(String str) {
 		String[] arr = str.split(Util.READDELIM);
 		return new Customer(arr[0], arr[1], Long.parseLong(arr[2]), arr[3], arr[4], arr[5]);
 	}
 
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param ipn
+	 * @param address
+	 * @param phone
+	 * @param email
+	 */
 	public Customer(String firstName, String lastName, Long ipn,
 			String address, String phone, String email) {
 

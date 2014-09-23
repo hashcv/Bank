@@ -3,10 +3,49 @@ package com.valentyn_tymku.bank;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Storage {
-	public static List<Customer> custs = new ArrayList<Customer>();
-	public static List<Account> accs = new ArrayList<Account>();
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * @author hash
+ *
+ */
+@XmlRootElement(name = "Storage")
+public class Storage {
+	private static Storage instance;
+	@XmlElement (name="Customer")
+	public static List<Customer> custs = new ArrayList<Customer>();
+	@XmlElement (name="Account")
+	public static List<Account> accs = new ArrayList<Account>();
+	
+	/**
+	 * @return the custs
+	 */
+	public static List<Customer> getCusts() {
+		return custs;
+	}
+
+	/**
+	 * @return the accs
+	 */
+	public static List<Account> getAccs() {
+		return accs;
+	}
+
+	private Storage() {
+		
+	}
+	
+	public static Storage getInstance() {
+		if (instance == null)
+			instance = new Storage();
+		return instance;
+	}
+
+	/**
+	 * @param ipn
+	 * @return
+	 */
 	public static Customer findCustomer(Long ipn) {
 		for (Customer cust : custs) {
 			if (cust.getIpn().equals(ipn))

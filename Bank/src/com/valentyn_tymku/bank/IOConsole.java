@@ -5,10 +5,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+/**
+ * @author hash
+ *
+ */
 public class IOConsole implements InputOutput {
-	private static List<Customer> custs = Storage.custs;
-	private static List<Account> accs = Storage.accs;
+	private static Storage storage = Storage.getInstance();
+	private static List<Customer> custs = storage.getCusts();
+	private static List<Account> accs = storage.getAccs();
 
+	/* (non-Javadoc)
+	 * @see com.valentyn_tymku.bank.InputOutput#read()
+	 */
 	public void read() throws IOException {
 		System.out.println("Console input. What do you want to add?");
 		System.out.println("1. Add a new Customer.");
@@ -35,13 +43,14 @@ public class IOConsole implements InputOutput {
 			System.out.println("951798684|acc1|USD|100.0|10.0|1212121212");
 			accs.add(Account.parseAcc(r.readLine()));
 			break;
-		}
-		ConsoleMenu.printMainMenu();
+		}	
 	}
 
+	/* (non-Javadoc)
+	 * @see com.valentyn_tymku.bank.InputOutput#write()
+	 */
 	public void write() throws IOException {
 		Storage.printAll();
-		ConsoleMenu.printMainMenu();
 	}
 
 }

@@ -6,11 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Mysql {
+/**
+ * @author hash
+ *
+ */
+public class MysqlUtil {
 	private static Connection conn;
 	private static Statement st;
 
-	public Mysql() {
+	public MysqlUtil() {
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -19,8 +23,19 @@ public class Mysql {
 		}
 
 		try {
+			Settings settings = new Settings();
+			StringBuilder connString = new StringBuilder();
+			connString.append("jdbc:mysql://");
+			connString.append(settings.getDbhost());
+			connString.append("/");
+			connString.append(settings.getDbname());
+			connString.append("?user=");
+			connString.append(settings.getDbuser());
+			connString.append("&password=");
+			connString.append(settings.getDbpassword());
+			
 			conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/hashcv?user=root&password=");
+					.getConnection(connString.toString());
 			st = getConnection().createStatement();
 
 		} catch (SQLException ex) {
@@ -39,6 +54,9 @@ public class Mysql {
 		return st;
 	}
 	
+	/**
+	 * @param sql
+	 */
 	public static void queryNoRs(String sql) {
 		try {
 			st.executeUpdate(sql);
@@ -49,6 +67,10 @@ public class Mysql {
 		}
 	}
 	
+	/**
+	 * @param sql
+	 * @return
+	 */
 	public static ResultSet queryRs(String sql) {
 		try {
 			return st.executeQuery(sql);

@@ -7,10 +7,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author hash
+ *
+ */
 public class IOTxt implements InputOutput {
-	private static List<Customer> custs = Storage.custs;
-	private static List<Account> accs = Storage.accs;
+	private static Storage storage = Storage.getInstance();
+	private static List<Customer> custs = storage.getCusts();
+	private static List<Account> accs = storage.getAccs();
 
+	/* (non-Javadoc)
+	 * @see com.valentyn_tymku.bank.InputOutput#read()
+	 */
 	public void read() throws IOException {
 		BufferedReader custReader = new BufferedReader(new FileReader(
 				"customers.txt"));
@@ -28,9 +36,12 @@ public class IOTxt implements InputOutput {
 
 		custReader.close();
 		accReader.close();
-		ConsoleMenu.printMainMenu();
+
 	}
 
+	/* (non-Javadoc)
+	 * @see com.valentyn_tymku.bank.InputOutput#write()
+	 */
 	public void write() throws IOException {
 		BufferedWriter cw = new BufferedWriter(new FileWriter("customersW.txt"));
 		BufferedWriter ca = new BufferedWriter(new FileWriter("accountsW.txt"));
@@ -46,7 +57,7 @@ public class IOTxt implements InputOutput {
 
 		cw.close();
 		ca.close();
-		ConsoleMenu.printMainMenu();
+
 	}
 
 }

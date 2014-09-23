@@ -4,9 +4,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * @author hash
+ *
+ */
 public class ConsoleMenu {
 	private static InputOutput obj;
 
+	/**
+	 * @throws IOException
+	 */
 	public static void printInputMenu() throws IOException {
 		System.out.println("What is input destination?");
 		System.out.println("1. Console.");
@@ -33,8 +40,12 @@ public class ConsoleMenu {
 			break;
 		}
 		obj.read();
+		ConsoleMenu.printMainMenu();
 	}
 
+	/**
+	 * @throws IOException
+	 */
 	public static void printOutputMenu() throws IOException {
 
 		System.out.println("What is output destination?");
@@ -62,8 +73,12 @@ public class ConsoleMenu {
 			break;
 		}
 		obj.write();
+		ConsoleMenu.printMainMenu();
 	}
 
+	/**
+	 * @throws IOException
+	 */
 	public static void printMainMenu() throws IOException {
 		System.out.println("What do you want to do?");
 		System.out.println("1. Input.");

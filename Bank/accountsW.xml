@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <account>
-    <number>951798684</number>
-    <name>acc1</name>
-    <debit>100.0</debit>
-    <creditLimit>10.0</creditLimit>
+    <number>951798687</number>
+    <name>acc4</name>
+    <currency>USD</currency>
+    <debit>103.0</debit>
+    <creditLimit>13.0</creditLimit>
     <customer>
-        <firstName>James</firstName>
-        <lastName>Hetfield</lastName>
-        <ipn>1212121212</ipn>
-        <address>Address1</address>
-        <phone>+380992233444</phone>
-        <email>jh@gmail.com</email>
+        <ipn>1212121213</ipn>
+        <address>Address3</address>
+        <phone>+380992233446</phone>
+        <email>jh3@gmail.com</email>
     </customer>
 </account>

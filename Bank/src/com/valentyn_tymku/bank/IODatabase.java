@@ -6,13 +6,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+/**
+ * @author hash
+ *
+ */
 public class IODatabase implements InputOutput {
-	private static List<Customer> custs = Storage.custs;
-	private static List<Account> accs = Storage.accs;
+	private static Storage storage = Storage.getInstance();
+	private static List<Customer> custs = storage.getCusts();
+	private static List<Account> accs = storage.getAccs();
 	private Statement st;
 
+	/* (non-Javadoc)
+	 * @see com.valentyn_tymku.bank.InputOutput#read()
+	 */
 	public void read() throws IOException {
-		Mysql mysql = new Mysql();
+		MysqlUtil mysql = new MysqlUtil();
 		ResultSet rs = mysql.queryRs("select * from customers");
 
 		try {
@@ -43,11 +51,14 @@ public class IODatabase implements InputOutput {
 			e.printStackTrace();
 		}
 
-		ConsoleMenu.printMainMenu();
+
 	}
 
+	/* (non-Javadoc)
+	 * @see com.valentyn_tymku.bank.InputOutput#write()
+	 */
 	public void write() throws IOException {
-		Mysql mysql = new Mysql();
+		MysqlUtil mysql = new MysqlUtil();
 
 		for (Customer cust : custs) {
 			StringBuilder sb = new StringBuilder();
@@ -90,6 +101,6 @@ public class IODatabase implements InputOutput {
 			sb.append("')");
 			mysql.queryNoRs(sb.toString());
 		}
-		ConsoleMenu.printMainMenu();
+
 	}
 }

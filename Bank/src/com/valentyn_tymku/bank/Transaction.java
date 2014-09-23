@@ -6,6 +6,10 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType(propOrder = { "id", "date", "srcAccount", "dstAccount", "sum" }, name = "transaction")
 @XmlRootElement*/
+/**
+ * @author hash
+ *
+ */
 public class Transaction {
 	private long id;
 	private Date date;
